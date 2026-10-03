@@ -4,7 +4,7 @@
 
 Name:           qownnotes
 Version:        26.10.0
-Release:        1.1jv
+Release:        %autorelease
 Summary:        Note-taking app and todo list manager with Nextcloud integration
 License:        GPL-2.0-only
 URL:            https://www.qownnotes.org/
@@ -77,27 +77,4 @@ desktop-file-validate %{buildroot}%{_datadir}/applications/PBE.QOwnNotes.desktop
 %{_datadir}/icons/hicolor/
 
 %changelog
-* Fri Oct 02 2026 Johan Vromans <jvromans@squirrel.nl> - 29.10.0-1.1jv
-Upgrade to upstream.
-
-* Wed Sep 30 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.14-1.1jv
-Upgrade to upstream.
-
-* Mon Sep 28 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.13-1.1jv
-Upgrade to upstream.
-
-* Sat Sep 26 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.12-1.1jv
-Upgrade to upstream.
-
-* Thu Sep 24 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.10-1.1jv
-Upgrade to upstream.
-
-* Mon Sep 21 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.9-1.1jv
-Upgrade to upstream.
-
-* Mon Sep 21 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.8-1.1jv
-Upgrade to upstream.
-
-* Thu Sep 17 2026 Johan Vromans <jvromans@squirrel.nl> - 29.9.6-1.2jv
-Upgrade to upstream.
-
+%autochangelog
