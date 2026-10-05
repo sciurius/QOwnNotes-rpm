@@ -3,7 +3,7 @@
 #
 
 Name:           qownnotes
-Version:        26.10.1
+Version:        26.10.2
 Release:        %autorelease
 Summary:        Note-taking app and todo list manager with Nextcloud integration
 License:        GPL-2.0-only
