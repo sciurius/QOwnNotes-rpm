@@ -4,7 +4,7 @@
 
 Name:           qownnotes
 Version:        26.10.5
-Release:        %autorelease
+Release:        jv.%autorelease
 Summary:        Note-taking app and todo list manager with Nextcloud integration
 License:        GPL-2.0-only
 URL:            https://www.qownnotes.org/
@@ -40,12 +40,17 @@ BuildRequires:  cmake(Qt6Widgets)
 BuildRequires:  cmake(Qt6Xml)
 %endif
 
-Patch99: qownnotes-edit.patch
+Patch98: %{name}-nospaceafterautocomplete.patch
+Patch99: %{name}-edit.patch
 
 %description
 QOwnNotes is a plain-text Markdown note-taking application with
 Nextcloud Notes integration. Notes remain ordinary files and can be
 synchronized with Nextcloud, ownCloud, or other synchronization tools.
+
+This is a custom version:
+* Some Emacs editor keys (C-a, C-e, Kp-0)
+* No space after autocomplete
 
 %prep
 %autosetup -p1
