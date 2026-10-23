@@ -12,3 +12,17 @@ and some patches.
 * [Official QOwnNotes repository](https://github.com/pbek/QOwnNotes)
 * [QOwnNotes script repository](https://github.com/qownnotes/scripts)
 
+Note that the `GNUmakefile` allows dynamic substitution of the actual
+version number, so there's no need to check in a new spec for every
+version update.
+
+## Upgrade procedure
+
+Assume Patrizio releases QOwnNotes `26.11.1`, and that your mock build
+folder is `~/rpmbuild`. Just execute
+
+    make install V=26.11.1
+
+See the `GNUmakefile` for details.
+
+
