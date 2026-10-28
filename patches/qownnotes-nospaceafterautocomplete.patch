@@ -1,0 +1,62 @@
+diff --git a/widgets/qownnotesmarkdowntextedit.cpp b/widgets/qownnotesmarkdowntextedit.cpp
+index b90e7b97b..79067819b 100644
+--- a/widgets/qownnotesmarkdowntextedit.cpp
++++ b/widgets/qownnotesmarkdowntextedit.cpp
+@@ -1574,7 +1574,13 @@ void QOwnNotesMarkdownTextEdit::onAutoCompleteRequested() {
+                 // overwrite the currently written word
+                 QTextCursor c = textCursor();
+                 c.movePosition(QTextCursor::StartOfWord, QTextCursor::KeepAnchor);
+-                c.insertText(text + QStringLiteral(" "));
++                if (SettingsService()
++                   .value(QStringLiteral("Editor/autocompleteNoSpace"), false)
++                   .toBool()) {
++                 c.insertText(text);
++                } else {
++                    c.insertText(text + QStringLiteral(" "));
++                }
+             } else {
+                 insertPlainText(text);
+             }
+diff --git a/widgets/settings/editorsettingswidget.cpp b/widgets/settings/editorsettingswidget.cpp
+index f4d440688..1bffd16b3 100644
+--- a/widgets/settings/editorsettingswidget.cpp
++++ b/widgets/settings/editorsettingswidget.cpp
+@@ -83,6 +83,8 @@ void EditorSettingsWidget::readSettings() {
+         settings.value(QStringLiteral("Editor/wikiLinkFileNameAutoSelect"), false).toBool());
+     ui->autocompleteSingleResultCheckBox->setChecked(
+         settings.value(QStringLiteral("Editor/autocompleteApplySingleResult"), false).toBool());
++    ui->autocompleteNoSpaceCheckBox->setChecked(
++        settings.value(QStringLiteral("Editor/autocompleteNoSpace"), false).toBool());
+     ui->hangingIndentCheckBox->setChecked(
+         settings.value(QStringLiteral("Editor/hangingIndent"), false).toBool());
+     ui->showMarkdownImagePreviewsCheckBox->setChecked(
+@@ -139,6 +141,8 @@ void EditorSettingsWidget::storeSettings() {
+                       ui->wikiLinkFileNameAutoSelectCheckBox->isChecked());
+     settings.setValue(QStringLiteral("Editor/autocompleteApplySingleResult"),
+                       ui->autocompleteSingleResultCheckBox->isChecked());
++    settings.setValue(QStringLiteral("Editor/autocompleteNoSpace"),
++                      ui->autocompleteNoSpaceCheckBox->isChecked());
+     settings.setValue(QStringLiteral("Editor/hangingIndent"),
+                       ui->hangingIndentCheckBox->isChecked());
+     settings.setValue(QStringLiteral("Editor/showMarkdownImagePreviews"),
+diff --git a/widgets/settings/editorsettingswidget.ui b/widgets/settings/editorsettingswidget.ui
+index 7425ed649..5788ca62b 100644
+--- a/widgets/settings/editorsettingswidget.ui
++++ b/widgets/settings/editorsettingswidget.ui
+@@ -247,6 +247,16 @@
+          </property>
+         </widget>
+        </item>
++       <item row="20" column="0" colspan="4">
++        <widget class="QCheckBox" name="autocompleteNoSpaceCheckBox">
++         <property name="toolTip">
++          <string>Do not append a space after autocompletion</string>
++         </property>
++         <property name="text">
++          <string>Do not insert a space after autocompletion</string>
++         </property>
++        </widget>
++       </item>
+      </layout>
+     </widget>
+    </item>
