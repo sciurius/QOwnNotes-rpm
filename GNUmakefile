@@ -1,6 +1,6 @@
 #!/bin/make -f
 
-V := 26.10.5
+V := 26.10.13
 R := 1
 VV := jv.${R}.fc44
 MOCK_FLAGS := --no-clean
@@ -22,4 +22,4 @@ install :: ${RESULT}/qownnotes-${V}-${VV}.x86_64.rpm
 	sudo rpm -Uvh ${RPM_FLAGS} ${RESULT}/qownnotes-${V}-${VV}.x86_64.rpm
 
 ${RPMBUILD}/SOURCES/${TXZ} ::
-	curl ${DOWNLOAD}/v${V}/${TXZ} --output ${RPMBUILD}/SOURCES/${TXZ}
+	wget -O ${RPMBUILD}/SOURCES/${TXZ} ${DOWNLOAD}/v${V}/${TXZ}
